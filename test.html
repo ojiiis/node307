@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:80%;height:400px">
+
+    </div>
+    <form method="POST" id="form">
+    <input type="text" name="query" id="query"><input type="submit" name="askai">
+    </form>
+    <script>
+        document.getElementById("form").onsubmit = function(e){
+            e.preventDefault()
+            var query = new FormData(document.getElementById("form"))
+        fetch("http://localhost:200/ai",{
+            method:"POST",
+            body:document.getElementById("query").value
+        }).then(r=>r.text()).then(r=>console.log(r))
+        }
+       
+    </script>
+</body>
+</html>
